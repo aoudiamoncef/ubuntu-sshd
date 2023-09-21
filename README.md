@@ -1,6 +1,6 @@
 # SSH-Enabled Ubuntu Docker Image
 
-This Docker image provides an Ubuntu 22.04 base with SSH server enabled. It allows you to easily create SSH-accessible containers via ssh keys.
+This Docker image provides an Ubuntu 22.04 base with SSH server enabled. It allows you to easily create SSH-accessible containers via SSH keys or with a default username and password.
 
 ## Usage
 
@@ -19,11 +19,13 @@ This Docker image provides an Ubuntu 22.04 base with SSH server enabled. It allo
 To run a container based on the image, use the following command:
 
 ```bash
-docker run -d -p host-port:22 -e AUTHORIZED_KEYS="$(cat path/to/authorized_keys_file)" aoudiamoncef/ubuntu-sshd:latest
+docker run -d -p host-port:22 -e SSH_USERNAME=myuser -e PASSWORD=mysecretpassword -e AUTHORIZED_KEYS="$(cat path/to/authorized_keys_file)" aoudiamoncef/ubuntu-sshd:latest
 ```
 
 - `-d` runs the container in detached mode.
 - `-p host-port:22` maps a host port to port 22 in the container. Replace `host-port` with your desired port.
+- `-e SSH_USERNAME=myuser` sets the SSH username in the container. Replace `myuser` with your desired username.
+- `-e PASSWORD=mysecretpassword` sets the SSH user's password in the container. Replace `mysecretpassword` with your desired password.
 - `-e AUTHORIZED_KEYS="$(cat path/to/authorized_keys_file)"` sets authorized SSH keys in the container. Replace `path/to/authorized_keys_file` with the path to your authorized_keys file.
 - `aoudiamoncef/ubuntu-sshd:latest` should be replaced with your Docker image's name and tag.
 
@@ -32,10 +34,11 @@ docker run -d -p host-port:22 -e AUTHORIZED_KEYS="$(cat path/to/authorized_keys_
 Once the container is running, you can SSH into it using the following command:
 
 ```bash
-ssh -p host-port root@localhost
+ssh -p host-port myuser@localhost
 ```
 
 - `host-port` should match the port you specified when running the container.
+- Use the provided password or SSH key for authentication, depending on your configuration.
 
 ### Note
 
