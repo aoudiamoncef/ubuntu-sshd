@@ -4,22 +4,29 @@ This Docker image provides an Ubuntu 22.04 base with SSH server enabled. It allo
 
 ## Usage
 
+### Cloning the Repository
+
+To get started, clone the GitHub  [repository](https://github.com/aoudiamoncef/ubuntu-sshd) containing the Dockerfile and scripts:
+
+```bash
+git clone https://github.com/aoudiamoncef/ubuntu-sshd
+cd ubuntu-sshd
+```
+
 ### Building the Docker Image
 
-1. Clone this repository or create a Dockerfile based on the provided instructions.
+Build the Docker image from within the cloned repository directory:
 
-2. Build the Docker image. You can specify the image name and tag as desired:
-
-   ```bash
-   docker build -t aoudiamoncef/ubuntu-sshd:latest .
-   ```
+```bash
+docker build -t my-ubuntu-sshd:latest .
+```
 
 ### Running a Container
 
 To run a container based on the image, use the following command:
 
 ```bash
-docker run -d -p host-port:22 -e SSH_USERNAME=myuser -e PASSWORD=mysecretpassword -e AUTHORIZED_KEYS="$(cat path/to/authorized_keys_file)" aoudiamoncef/ubuntu-sshd:latest
+docker run -d -p host-port:22 -e SSH_USERNAME=myuser -e PASSWORD=mysecretpassword -e AUTHORIZED_KEYS="$(cat path/to/authorized_keys_file)" my-ubuntu-sshd:latest
 ```
 
 - `-d` runs the container in detached mode.
@@ -27,7 +34,7 @@ docker run -d -p host-port:22 -e SSH_USERNAME=myuser -e PASSWORD=mysecretpasswor
 - `-e SSH_USERNAME=myuser` sets the SSH username in the container. Replace `myuser` with your desired username.
 - `-e PASSWORD=mysecretpassword` sets the SSH user's password in the container. Replace `mysecretpassword` with your desired password.
 - `-e AUTHORIZED_KEYS="$(cat path/to/authorized_keys_file)"` sets authorized SSH keys in the container. Replace `path/to/authorized_keys_file` with the path to your authorized_keys file.
-- `aoudiamoncef/ubuntu-sshd:latest` should be replaced with your Docker image's name and tag.
+- `my-ubuntu-sshd:latest` should be replaced with your Docker image's name and tag.
 
 ### SSH Access
 
