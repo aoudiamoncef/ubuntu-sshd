@@ -1,0 +1,35 @@
+name: Docker Image CI
+
+on:
+  pull_request:
+    branches:
+      - 'main'
+
+jobs:
+  build-check:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up QEMU
+        uses: docker/setup-qemu-action@v3
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      - name: Extract metadata (tags, labels) for Docker
+        id: meta
+        uses: docker/metadata-action@v4
+        with:
+          images: |
+            aoudiamoncef/ubuntu-sshd
+            ghcr.io/${{ github.repository }}/ubuntu-sshd
+
+      - name: Build Docker image
+        uses: docker/build-push-action@v5
+        with:
+          context: .
+          push: false
+          tags: aoudiamoncef/ubuntu-sshd:pr-${{ github.event.number }}
+          labels: ${{ steps.meta.outputs.labels }}
