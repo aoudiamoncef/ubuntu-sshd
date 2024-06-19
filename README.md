@@ -4,7 +4,7 @@
 [![Docker Pulls](https://img.shields.io/docker/pulls/aoudiamoncef/ubuntu-sshd.svg)](https://hub.docker.com/r/aoudiamoncef/ubuntu-sshd)
 [![Maintenance](https://img.shields.io/badge/Maintained-Yes-green.svg)](https://github.com/aoudiamoncef/ubuntu-sshd)
 
-This Docker image provides an Ubuntu 22.04 base with SSH server enabled. It allows you to easily create SSH-accessible containers via SSH keys or with a default username and password.
+This Docker image provides an Ubuntu 24.04 base with SSH server enabled. It allows you to easily create SSH-accessible containers via SSH keys or with a default username and password.
 
 ## Usage
 
