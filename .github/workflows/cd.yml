@@ -8,6 +8,11 @@ on:
 jobs:
   docker:
     runs-on: ubuntu-latest
+    permissions:
+      packages: write
+      contents: read
+      attestations: write
+      id-token: write
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -39,25 +44,19 @@ jobs:
             aoudiamoncef/ubuntu-sshd
             ghcr.io/${{ github.repository }}/ubuntu-sshd
 
-      - name: Build and push to Docker Hub
+      - name: Build and push to Docker Hub and GitHub Container Registry
         uses: docker/build-push-action@v5
         with:
           context: .
           push: true
-          tags: aoudiamoncef/ubuntu-sshd:latest
-          labels: ${{ steps.meta.outputs.labels }}
-
-      - name: Build and push to GitHub Container Registry
-        uses: docker/build-push-action@v5
-        with:
-          context: .
-          push: true
-          tags: ghcr.io/${{ github.repository }}/ubuntu-sshd:latest
+          tags: |
+            aoudiamoncef/ubuntu-sshd:latest
+            ghcr.io/${{ github.repository }}/ubuntu-sshd:latest
           labels: ${{ steps.meta.outputs.labels }}
 
       - name: Generate artifact attestation
         uses: actions/attest-build-provenance@v1
         with:
           subject-name: ghcr.io/${{ github.repository }}/ubuntu-sshd
-          subject-digest: ${{ steps.push.outputs.digest }}
+          subject-digest: ${{ steps.build.outputs.digest }}
           push-to-registry: true

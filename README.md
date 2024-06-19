@@ -1,6 +1,7 @@
 # SSH-Enabled Ubuntu Docker Image
 
-[![Docker Image Deployment](https://github.com/aoudiamoncef/ubuntu-sshd/actions/workflows/ci_cd.yml/badge.svg)](https://github.com/aoudiamoncef/ubuntu-sshd/actions/workflows/ci_cd.yml)
+[![Docker Image CI](https://github.com/aoudiamoncef/ubuntu-sshd/actions/workflows/ci_cd.yml/badge.svg)](https://github.com/aoudiamoncef/ubuntu-sshd/actions/workflows/ci.yml)
+[![Docker Image Deployment](https://github.com/aoudiamoncef/ubuntu-sshd/actions/workflows/ci_cd.yml/badge.svg)](https://github.com/aoudiamoncef/ubuntu-sshd/actions/workflows/cd.yml)
 [![Docker Pulls](https://img.shields.io/docker/pulls/aoudiamoncef/ubuntu-sshd.svg)](https://hub.docker.com/r/aoudiamoncef/ubuntu-sshd)
 [![Maintenance](https://img.shields.io/badge/Maintained-Yes-green.svg)](https://github.com/aoudiamoncef/ubuntu-sshd)
 
