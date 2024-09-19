@@ -46,9 +46,10 @@ jobs:
 
       - name: Build and push to Docker Hub and GitHub Container Registry
         id: build
-        uses: docker/build-push-action@v5
+        uses: docker/build-push-action@v6
         with:
           context: .
+          sbom: true
           push: true
           tags: |
             aoudiamoncef/ubuntu-sshd:latest
