@@ -1,3 +1,5 @@
+
+
 [![Docker Image CI](https://github.com/aoudiamoncef/ubuntu-sshd/actions/workflows/ci.yml/badge.svg)](https://github.com/aoudiamoncef/ubuntu-sshd/actions/workflows/ci.yml)
 [![Docker Image Deployment](https://github.com/aoudiamoncef/ubuntu-sshd/actions/workflows/cd.yml/badge.svg)](https://github.com/aoudiamoncef/ubuntu-sshd/actions/workflows/cd.yml)
 [![Docker Pulls](https://img.shields.io/docker/pulls/aoudiamoncef/ubuntu-sshd.svg)](https://hub.docker.com/r/aoudiamoncef/ubuntu-sshd)
@@ -42,7 +44,7 @@ docker run -d \
 
 - `-d` runs the container in detached mode.
 - `-p host-port:22` maps a host port to port 22 in the container. Replace `host-port` with your desired port.
-- `-e SSH_USERNAME=myuser` sets the SSH username in the container. Replace `myuser` with your desired username.
+- `-e SSH_USERNAME=myuser` sets the SSH username in the container. Defaults to `ubuntu` if not provided. Replace `myuser` with your desired username.
 - `-e SSH_PASSWORD=mysecretpassword` sets the SSH user's password in the container. **This environment variable is
   required**. Replace `mysecretpassword` with your desired password.
 - `-e AUTHORIZED_KEYS="$(cat path/to/authorized_keys_file)"` sets authorized SSH keys in the container. Replace `path/to/authorized_keys_file` with the path to your authorized_keys file.
